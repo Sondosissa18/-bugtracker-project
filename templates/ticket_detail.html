@@ -1,0 +1,36 @@
+<button><a href="/editticket/{{ticket.id}}">edit_ticket</a></button>
+
+
+<button><a href="/invalid/{{ticket.id}}">Mark ticket as Invalid</a></button>
+<button><a href="/completed/{{ticket.id}}">Mark ticket as Completed</a></button>
+<button><a href="/assigntickettoyou/{{ticket.id}}">Assign ticket to You</a></button>
+
+
+<h1> Ticket Detail page </h1>
+
+<h4>Info</h4>
+
+<h1>Id:{{ticket.id}}</h1> 
+
+<strong>Title: </strong><a>{{ticket.title}}</a>
+
+<h2>
+  Reported by:
+  <a href="/user/{{ticket.author.id}}/">{{ticket.author.username}}</a>
+</h2>
+<h2>Assigned User: {{ticket.assigned_to}}</h2>
+<h2>Completed by: {{ticket.user_completed_by}}</h2>
+<h2>Submitted on: {{ticket.created_at}}</h2>
+<h2>Status: {{ticket.status}}</h2>
+
+<h3>Description: {{ticket.description}}</h3>
+
+
+
+<form method="post" action="/assignperson/{{ticket.id}}/">
+  {% csrf_token %} {{change_person.as_p}}
+  <input type="submit" class="btn btn-success" value="Submit" />
+</div>
+</form>
+
+

@@ -1,0 +1,50 @@
+{{author.username}} 
+{{author.id}} 
+
+<br>
+<br>
+<h1> User Detail page </h1>
+
+<br>
+
+{% if curent_user_ticket %} 
+<h1> * In progress Ticket</h1>
+
+{% for ticket in curent_user_ticket %}
+
+
+<li>In Progress Tickets: <a href="/ticket/{{ticket.id}}">{{ticket.title}}</a></li>
+{% endfor %}
+{% else %}
+<h3>
+  {{user.username}} Does not have any current tickets
+  </h3>
+  {% endif %} 
+
+
+{% if completed_user_ticket %}
+<h1> * Completed Ticket</h1>
+    {% for ticket in completed_user_ticket %}
+    <li>Completed Tickets:  <a href="/ticket/{{ticket.id}}">{{ticket.title}}</a></li>
+    {% endfor %} 
+   {% else %}
+<h3>
+  {{user.username}} Does not have any Completed Ticket
+  </h3>
+ {% endif %} 
+    
+
+{% if filed_user_ticket %}
+<h1> * Filed Ticket</h1>
+
+    {% for ticket in filed_user_ticket %}
+    <li>Filed Tickets: <a href="/ticket/{{ticket.id}}">{{ticket.title}}</a></li>
+    {% endfor %}
+    
+    {% else %}
+<h3>
+  {{user.username}} Has not Filed any Tickets yet
+  </h3>
+  {% endif %} 
+    
+{{completed_user_ticket.user_completed_by.id}}

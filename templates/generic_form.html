@@ -1,0 +1,17 @@
+<button><a href="{% url 'home' %}">Home</a></button> |
+<button><a href="{%  url 'add_ticket' %}">Submit Ticket</a></button>
+
+<br />
+<br />
+
+<h1>Submit a Ticket<h1>
+<h2>What's Wrong? Something broken? Write it down!<h2>
+<br /><br />
+<div class="form-group">
+<form method="post" action="">
+  {% csrf_token %} {{ form.as_p}}
+  <input type="submit" class="btn btn-success" value="Submit" />
+</div>
+</form>
+<div>
+</div>

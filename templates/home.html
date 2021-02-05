@@ -1,0 +1,117 @@
+<button><a href="{% url 'home' %}">Home</a></button> |
+<button><a href="{%  url 'add_ticket' %}">Submit Ticket</a></button>|
+<button><a href="{%  url 'logout' %}">Logout</a></button>
+{% comment %} <button><a href="{/ticket/{{ticket.id}}}">Ticket detail Page</a></button> {% endcomment %}
+
+
+<br />
+<br />
+{% if user.is_authenticated %} Hi {{user.username }}! My user: {{MyUser}}
+
+<br />
+<br />
+<strong>Currently logged-in user: </strong> {{request.user}}
+<br />
+ {% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Log In</a> | {% endif %}
+
+<br />
+<br />
+{% for ticket in tickets %}
+{% if ticket.status == "new" %}
+<h1> New Ticket</h1>
+<ul>
+  <strong><li>Id:{{ticket.id}}</li> </strong>
+
+  {% comment %} <li>Title:<a>{{ticket.title}}</a></li> {% endcomment %}
+
+
+  <li>Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a></li>
+  
+    <strong><li>{{ ticket.description }}</li></strong>
+    <strong><li>Created by: {{ ticket.author }}</li></strong>
+    <strong><li>{{ ticket.created_at }}</li></strong>
+    <strong><li>{{ ticket.user_completed_by }}</li></strong>
+    <strong><li>{{ ticket.status }}</li></strong>
+    <strong><li>Assigned to: {{ ticket.assigned_to }}</li></strong>
+    <strong><li>{{ ticket.ticket_age }}</li></strong>
+  </li>
+</ul>
+{% endif %}
+{% endfor %}
+
+
+{% for ticket in tickets %}
+{% if ticket.status == 'in progress' %}
+
+<h1> In progress Ticket</h1>
+<ul>
+  <strong><li>Id:{{ticket.id}}</li> </strong>
+
+  {% comment %} <li>Title:<a>{{ticket.title}}</a></li> {% endcomment %}
+
+
+  <li>Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a></li>
+  
+    <strong><li>{{ ticket.description }}</li></strong>
+    <strong><li>Created by: {{ ticket.author }}</li></strong>
+    <strong><li>{{ ticket.created_at }}</li></strong>
+    <strong><li>{{ ticket.user_completed_by }}</li></strong>
+    <strong><li>{{ ticket.status }}</li></strong>
+    <strong><li>Assigned to: {{ ticket.assigned_to }}</li></strong>
+    <strong><li>{{ ticket.ticket_age }}</li></strong>
+  </li>
+</ul>
+{% endif %}
+{% endfor %}
+
+{% for ticket in tickets %}
+{% if ticket.status == 'done' %}
+
+<h1> Done Ticket</h1>
+<ul>
+  <strong><li>Id:{{ticket.id}}</li> </strong>
+
+  {% comment %} <li>Title:<a>{{ticket.title}}</a></li> {% endcomment %}
+
+
+  <li>Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a></li>
+  
+    <strong><li>{{ ticket.description }}</li></strong>
+    <strong><li>Created by: {{ ticket.author }}</li></strong>
+    <strong><li>{{ ticket.created_at }}</li></strong>
+    <strong><li>{{ ticket.user_completed_by }}</li></strong>
+    <strong><li>{{ ticket.status }}</li></strong>
+    <strong><li>Assigned to: {{ ticket.assigned_to }}</li></strong>
+    <strong><li>{{ ticket.ticket_age }}</li></strong>
+  </li>
+</ul>
+{% endif %}
+{% endfor %}
+
+{% for ticket in tickets %}
+{% if ticket.status == 'Invalid' %}
+
+<h1> Invalid </h1>
+<ul>
+  <strong><li>Id:{{ticket.id}}</li> </strong>
+
+  {% comment %} <li>Title:<a>{{ticket.title}}</a></li> {% endcomment %}
+
+
+  <li>Title: <a href="/ticket/{{ticket.id}}/">{{ticket.title}}</a></li>
+  
+    <strong><li>{{ ticket.description }}</li></strong>
+    <strong><li>Created by: {{ ticket.author }}</li></strong>
+    <strong><li>{{ ticket.created_at }}</li></strong>
+    <strong><li>{{ ticket.user_completed_by }}</li></strong>
+    <strong><li>{{ ticket.status }}</li></strong>
+    <strong><li>Assigned to: {{ ticket.assigned_to }}</li></strong>
+    <strong><li>{{ ticket.ticket_age }}</li></strong>
+  </li>
+</ul>
+{% endif %}
+{% endfor %}
+
+

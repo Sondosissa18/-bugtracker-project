@@ -1,0 +1,8 @@
+<button><a href="{% url 'home' %}">Home</a></button> |
+<button><a href="{%  url 'add_ticket' %}">Submit Ticket</a></button>
+
+<h2>Log In</h2>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Log In</button>
+</form>
